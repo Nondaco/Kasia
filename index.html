@@ -372,6 +372,768 @@
 
         .ref-item {
             display: block;
+            width: fit-content;
+            width: -moz-fit-content;
+            width: -webkit-fit-content;
+            margin: 0 auto 2px auto;
+            font-family: Helvetica, Arial, sans-serif;
+            font-size: clamp(16px, 2.2vh, 24px);
+            font-weight: 400;
+            line-height: 1.4;
+            color: #1a1a1a;
+            letter-spacing: 0.02em;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            text-decoration-thickness: 1px;
+            -webkit-text-decoration-thickness: 1px;
+            margin-bottom: 2px;
+            cursor: pointer;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            transform: translateZ(0);
+            -webkit-transform: translateZ(0);
+            will-change: opacity, text-decoration;
+            transition: text-decoration 0.1s ease;
+            -webkit-transition: text-decoration 0.1s ease;
+        }
+
+        .ref-item:hover {
+            text-decoration: none;
+            animation: pulse-fast 1s ease-in-out;
+            -webkit-animation: pulse-fast 1s ease-in-out;
+        }
+
+        /* RESPONSIVE DESIGN */
+        
+        /* Tablet and small laptop */
+        @media (max-width: 1024px) {
+            #hover-zone {
+                width: 90vw;
+                max-width: 720px;
+            }
+            
+            #top-text {
+                width: 90vw;
+                max-width: 680px;
+                font-size: clamp(17px, 2.3vh, 24px);
+                padding: 0 20px;
+            }
+            
+            #hover-zone:hover ~ #top-block #top-text {
+                font-size: clamp(18px, 2.5vh, 26px);
+            }
+            
+            #bottom-block {
+                width: 90vw;
+                max-width: 680px;
+                font-size: clamp(15px, 2.1vh, 20px);
+            }
+        }
+        
+        /* Mobile landscape and small tablets */
+        @media (max-width: 768px) {
+            #hover-zone {
+                width: calc(100vw - 40px);
+                height: 160px;
+            }
+            
+            #top-text {
+                width: calc(100vw - 40px);
+                font-size: clamp(16px, 2.8vw, 22px);
+                line-height: 1.3;
+                padding: 0 20px;
+            }
+            
+            #hover-zone:hover ~ #top-block #top-text {
+                font-size: clamp(17px, 3vw, 24px);
+            }
+            
+            #bottom-block {
+                width: calc(100vw - 40px);
+                font-size: clamp(14px, 2.5vw, 18px);
+                bottom: max(40px, env(safe-area-inset-bottom, 40px));
+                padding: 0 20px;
+            }
+            
+            #projects-content {
+                padding: 30px 20px 50px;
+            }
+            
+            /* Ensure content doesn't get cut off by browser UI */
+            body, html {
+                min-height: 100vh;
+                min-height: -webkit-fill-available;
+            }
+            
+            #card {
+                min-height: 100vh;
+                min-height: -webkit-fill-available;
+            }
+        }
+        
+        /* Mobile portrait */
+        @media (max-width: 520px) {
+            #hover-zone {
+                width: calc(100vw - 32px);
+                height: 140px;
+            }
+            
+            #top-text {
+                width: calc(100vw - 32px);
+                font-size: clamp(15px, 3.2vw, 20px);
+                line-height: 1.25;
+                padding: 0 16px;
+                letter-spacing: 0.01em;
+            }
+            
+            #hover-zone:hover ~ #top-block #top-text {
+                font-size: clamp(16px, 3.5vw, 22px);
+            }
+            
+            #bottom-block {
+                width: calc(100vw - 32px);
+                font-size: clamp(13px, 2.8vw, 16px);
+                bottom: max(30px, env(safe-area-inset-bottom, 30px));
+                padding: 0 16px;
+            }
+            
+            #projects-content {
+                padding: 25px 16px max(40px, env(safe-area-inset-bottom, 40px));
+            }
+
+            .ref-category {
+                font-size: clamp(10px, 2.2vw, 13px);
+                margin-bottom: 12px;
+            }
+
+            .ref-item {
+                font-size: clamp(13px, 2.8vw, 18px);
+                margin-bottom: 8px;
+            }
+            
+            /* Fix viewport height issues on mobile */
+            body {
+                height: 100vh;
+                height: -webkit-fill-available;
+            }
+            
+            #card {
+                height: 100vh;
+                height: -webkit-fill-available;
+            }
+        }
+        
+        /* Very small screens */
+        @media (max-width: 375px) {
+            #hover-zone {
+                width: calc(100vw - 24px);
+                height: 120px;
+            }
+            
+            #top-text {
+                width: calc(100vw - 24px);
+                font-size: clamp(14px, 3.5vw, 18px);
+                padding: 0 12px;
+            }
+            
+            #hover-zone:hover ~ #top-block #top-text {
+                font-size: clamp(15px, 3.8vw, 20px);
+            }
+            
+            #bottom-block {
+                width: calc(100vw - 24px);
+                font-size: clamp(12px, 3vw, 15px);
+                padding: 0 12px;
+            }
+            
+            #projects-content {
+                padding: 20px 12px 35px;
+            }
+        }
+
+        /* FOOTER CREDIT - COMMENTED OUT
+        #footer-credit {
+            position: fixed;
+            bottom: 12px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: Helvetica, Arial, sans-serif;
+            font-size: 9px;
+            font-weight: 400;
+            color: #999;
+            z-index: 1000;
+            pointer-events: none;
+            letter-spacing: 0.01em;
+        }
+        */
+    </style>
+</head>
+<body>
+
+<div id="scene">
+    <div id="card">
+
+        <!-- FRONT -->
+        <div class="face" id="front" onclick="handleFrontClick(event)">
+            <!-- Invisible hover zone for Safari -->
+            <div id="hover-zone"></div>
+            <div id="top-block">
+                <div id="top-text"></div>
+            </div>
+            <div id="bottom-block"></div>
+        </div>
+
+        <!-- PROJECTS BACK -->
+        <div class="face" id="back-projects" onclick="flipBackFromProjects()">
+            <div id="projects-gradient"></div>
+            <div id="projects-content">
+
+                <div class="ref-section">
+                    <div class="ref-category">Interviews</div>
+                    <a href="https://example.com/etel-adnan-interview" class="ref-item" target="_blank" onclick="event.stopPropagation()">Etel Adnan</a>
+                    <a href="https://example.com/martin-margiela-interview" class="ref-item" target="_blank" onclick="event.stopPropagation()">Martin Margiela</a>
+                    <a href="https://example.com/shirin-neshat-interview" class="ref-item" target="_blank" onclick="event.stopPropagation()">Shirin Neshat</a>
+                    <a href="https://example.com/yanis-varoufakis-interview" class="ref-item" target="_blank" onclick="event.stopPropagation()">Yanis Varoufakis</a>
+                </div>
+
+                <div class="ref-section">
+                    <div class="ref-category">Features</div>
+                    <a href="https://example.com/athens-art-capital" class="ref-item" target="_blank" onclick="event.stopPropagation()">Athens: An Art Capital Arises</a>
+                    <a href="https://example.com/collecting-the-now" class="ref-item" target="_blank" onclick="event.stopPropagation()">Collecting the Now</a>
+                    <a href="https://example.com/ysl-marrakesh-house" class="ref-item" target="_blank" onclick="event.stopPropagation()">Immortal Coil: Yves Saint Laurent's first house in Marrakesh</a>
+                    <a href="https://example.com/leigh-bowery-feature" class="ref-item" target="_blank" onclick="event.stopPropagation()">Leigh Bowery</a>
+                </div>
+
+                <div class="ref-section">
+                    <div class="ref-category">Reviews</div>
+                    <a href="https://example.com/angelidakis-review" class="ref-item" target="_blank" onclick="event.stopPropagation()">Andreas Angelidakis at Espace Neimeyer</a>
+                    <a href="https://example.com/desert-x-alula" class="ref-item" target="_blank" onclick="event.stopPropagation()">Desert X AlUla</a>
+                    <a href="https://example.com/benaki-folk-art" class="ref-item" target="_blank" onclick="event.stopPropagation()">Folk Art at the Benaki Museum</a>
+                    <a href="https://example.com/frankenthaler-guggenheim" class="ref-item" target="_blank" onclick="event.stopPropagation()">Helen Frankenthaler at Guggenheim Bilbao</a>
+                    <a href="https://example.com/pascali-prada" class="ref-item" target="_blank" onclick="event.stopPropagation()">Pino Pascali at Fondazione Prada</a>
+                </div>
+
+                <div class="ref-section">
+                    <div class="ref-category">Books</div>
+                    <a href="https://example.com/house-beauty-culture" class="ref-item" target="_blank" onclick="event.stopPropagation()">The House of Beauty and Culture — ICA London</a>
+                    <a href="https://example.com/leila-alaoui-skira" class="ref-item" target="_blank" onclick="event.stopPropagation()">Leila Alaoui — Skira Arte</a>
+                </div>
+
+                <div class="ref-section">
+                    <div class="ref-category">Articles</div>
+                    <a href="https://example.com/frankenthaler-wallpaper" class="ref-item" target="_blank" onclick="event.stopPropagation()">Helen Frankenthaler for Wallpaper*</a>
+                    <a href="https://example.com/margiela-ft-htsi" class="ref-item" target="_blank" onclick="event.stopPropagation()">Martin Margiela for FT HTSI</a>
+                    <a href="https://example.com/ysl-world-interiors" class="ref-item" target="_blank" onclick="event.stopPropagation()">Yves Saint Laurent for The World of Interiors</a>
+                </div>
+
+                <div class="ref-section">
+                    <div class="ref-category">Podcasts</div>
+                    <a href="https://example.com/1980s-politics-podcast" class="ref-item" target="_blank" onclick="event.stopPropagation()">The politics of 1980s style — i-Dentity</a>
+                    <a href="https://example.com/leila-alaoui-podcast" class="ref-item" target="_blank" onclick="event.stopPropagation()">Leila Alaoui's photography — About Art / The Great Women Artists</a>
+                </div>
+
+                <div class="ref-section">
+                    <div class="ref-category">Clients</div>
+                    <a href="https://example.com/aman-work" class="ref-item" target="_blank" onclick="event.stopPropagation()">Aman</a>
+                    <a href="https://example.com/colefax-fowler-work" class="ref-item" target="_blank" onclick="event.stopPropagation()">Colefax & Fowler</a>
+                    <a href="https://example.com/kunstverein-hamburg" class="ref-item" target="_blank" onclick="event.stopPropagation()">Kunstverein in Hamburg</a>
+                    <a href="https://example.com/mason-studio-work" class="ref-item" target="_blank" onclick="event.stopPropagation()">Mason Studio</a>
+                    <a href="https://example.com/para-site-work" class="ref-item" target="_blank" onclick="event.stopPropagation()">Para Site</a>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- FOOTER CREDIT - COMMENTED OUT
+<div id="footer-credit">
+    <span id="footer-text"></span>
+</div>
+-->
+
+<script>
+    const pages = [
+        {
+            top: "KASIA MACEJOWSKA",
+            bottom: `Writer, editor, curator and consultant. Find out more about recent, selected <span class="projects-link">projects</span>, keep in contact <strong><a href="https://www.instagram.com/kasiasophia/" target="_blank" onclick="event.stopPropagation()">@kasiasophia</a></strong> or reach out at <strong><a href="mailto:kasiamaciejowska@gmail.com" onclick="event.stopPropagation()">kasiamaciejowska@gmail.com</a></strong>.`
+        },
+        {
+            top: "is a writer, a journalist",
+            bottom: `Kasia has been a contributor to FT HTSI and Wallpaper* magazines for over a decade and more recently to FT Weekend and The World Of Interiors. She has also written articles for Vogue, Monocle and i-D among many other publications.`
+        },
+        {
+            top: "with ink on her hands she edits and delves into stories",
+            bottom: `Her two books <em>The House of Beauty and Culture</em> (ICA, 2016) and <em>Leila Alaoui</em> (Skira, 2026) offer in-depth sociocultural portraits of artists working outside the dominant establishment. She sometimes copyedits for Sternberg Press and Onassis Publications.`
+        },
+        {
+            top: "she passes what she knows",
+            bottom: `Kasia provides text and advisory services to cultural organisations, artists and design studios. In 2021 she established the Díla network — mentorships for young refugee women pursuing creative careers, connecting them with Europe's established arts community.`
+        },
+        {
+            top: "she talks the talk",
+            bottom: `Kasia gives guest lectures and workshops at the V&A Museum, University of the Arts London, and the University of Westminster.`
+        },
+        {
+            top: "and gets burned for poetry.",
+            bottom: `She privately practices automatic writing to channel poems whenever they present themselves.`
+        }
+    ];
+
+    let current = 0;
+    let animating = false;
+    let wordTimeout = null;
+    let pulseInterval = null;
+    let isFlipped = false;
+
+    const topEl = document.getElementById('top-text');
+    const botEl = document.getElementById('bottom-block');
+    const card = document.getElementById('card');
+
+    function flipToProjects(e) {
+        e.stopPropagation();
+        if (isFlipped) return;
+        isFlipped = true;
+        card.classList.add('flipped-projects');
+    }
+
+    function flipBackFromProjects() {
+        if (!isFlipped) return;
+        isFlipped = false;
+        card.classList.remove('flipped-projects');
+        // Reset to first page when returning from projects
+        current = 0;
+        showPage(0);
+    }
+
+    function clearPulse() {
+        if (pulseInterval) { 
+            clearInterval(pulseInterval); 
+            pulseInterval = null; 
+        }
+        topEl.classList.remove('pulse');
+    }
+
+    function startPulse() {
+        clearPulse();
+        // Initial pulse after 2 seconds
+        setTimeout(() => {
+            if (!animating && !isFlipped) {
+                topEl.classList.remove('pulse');
+                void topEl.offsetWidth;
+                topEl.classList.add('pulse');
+                console.log('Pulse applied'); // Debug log
+            }
+        }, 2000);
+        
+        // Recurring pulse every 4 seconds
+        pulseInterval = setInterval(() => {
+            if (!animating && !isFlipped) {
+                topEl.classList.remove('pulse');
+                void topEl.offsetWidth;
+                topEl.classList.add('pulse');
+                console.log('Pulse applied'); // Debug log
+            }
+        }, 4000);
+    }
+
+    function showPage(index) {
+        animating = true;
+        clearPulse();
+        botEl.classList.remove('visible');
+
+        const words = pages[index].top.split(' ');
+        topEl.innerHTML = '';
+        words.forEach((w, i) => {
+            const span = document.createElement('span');
+            span.className = 'word';
+            span.textContent = i < words.length - 1 ? w + '\u00a0' : w;
+            topEl.appendChild(span);
+        });
+
+        const spans = topEl.querySelectorAll('.word');
+        let i = 0;
+        function showNext() {
+            if (i < spans.length) {
+                spans[i].classList.add('visible');
+                i++;
+                wordTimeout = setTimeout(showNext, 120);
+            } else {
+                setTimeout(() => {
+                    botEl.innerHTML = pages[index].bottom;
+                    botEl.classList.add('visible');
+                    animating = false;
+                    startPulse();
+                }, 300);
+            }
+        }
+        showNext();
+    }
+
+    function handleFrontClick(e) {
+        if (isFlipped || animating) return;
+        clearTimeout(wordTimeout);
+        current = (current + 1) % pages.length;
+        showPage(current);
+    }
+
+    // Initialize
+    showPage(0);
+    
+    // Start the pulse animation
+    startPulse();
+
+    // Set footer text with current year - COMMENTED OUT
+    // document.getElementById('footer-text').textContent = `Kasia Macejowska ${new Date().getFullYear()}`;
+
+    // Event delegation for dynamically added links
+    document.addEventListener('click', function(e) {
+        if (e.target.classList.contains('projects-link')) {
+            flipToProjects(e);
+        }
+    });
+</script>
+
+</body>
+</html>    <!-- Favicons -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/favicon-512x512.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="theme-color" content="#1a1a1a">
+    
+    <!-- Additional SEO -->
+    <meta name="format-detection" content="telephone=no">
+    <meta name="google-site-verification" content="your-google-verification-code">
+    
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Kasia Maciejowska",
+      "jobTitle": "Writer, Editor & Cultural Consultant",
+      "description": "Writer, editor, curator and consultant specializing in art, culture, and design.",
+      "url": "https://kasiamaciejowska.com",
+      "sameAs": [
+        "https://www.instagram.com/kasiasophia/"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "kasiamaciejowska@gmail.com",
+        "contactType": "professional"
+      },
+      "knowsAbout": [
+        "Art Criticism",
+        "Cultural Writing",
+        "Editorial Services",
+        "Curatorial Work",
+        "Design Journalism"
+      ],
+      "alumniOf": {
+        "@type": "Organization",
+        "name": "Various Publications"
+      }
+    }
+    </script>
+    <style>
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+        }
+
+        body {
+            font-family: Helvetica, Arial, sans-serif;
+            background: #ffffff;
+            color: #1a1a1a;
+            overflow: hidden;
+        }
+
+        #scene {
+            width: 100vw;
+            height: 100vh;
+            perspective: 1400px;
+        }
+
+        #card {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.85s cubic-bezier(0.55, 0.1, 0.45, 0.9);
+        }
+
+        #card.flipped-projects { transform: rotateY(180deg); }
+
+        .face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            overflow: hidden;
+        }
+
+        /* FRONT SIDE */
+        #front {
+            background: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Large generous hover zone covering center area - only active on front page */
+        #hover-zone {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            -webkit-transform: translate(-50%, -50%);
+            width: 800px;
+            height: 200px;
+            cursor: pointer;
+            z-index: 10;
+            pointer-events: auto;
+        }
+        
+        /* Hide hover zone when projects page is active */
+        #card.flipped-projects #hover-zone {
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        #top-block {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            -webkit-transform: translate(-50%, -50%);
+            pointer-events: none;
+        }
+        
+        #top-text {
+            max-width: 680px;
+            width: 680px;
+            text-align: center;
+            font-size: clamp(18px, 2.5vh, 26px);
+            font-weight: 400;
+            line-height: 1.4;
+            color: #1a1a1a;
+            letter-spacing: 0.02em;
+            transition: font-size 0.3s ease;
+            -webkit-transition: font-size 0.3s ease;
+            display: block;
+            margin: 0 auto;
+            text-align: center;
+            /* Force center alignment during scaling */
+            transform-origin: center center;
+            -webkit-transform-origin: center center;
+            /* Prevent text shifting during size changes */
+            white-space: nowrap;
+            overflow: visible;
+        }
+        
+        #hover-zone:hover ~ #top-block #top-text {
+            font-size: clamp(19px, 2.7vh, 28px);
+        }
+        #top-text.pulse { 
+            animation: pulse 2s ease-in-out; 
+            -webkit-animation: pulse 2s ease-in-out;
+        }
+
+        @keyframes pulse {
+            0%   { opacity: 1; }
+            50%  { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        @-webkit-keyframes pulse {
+            0%   { opacity: 1; }
+            50%  { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        @keyframes pulse-fast {
+            0%   { opacity: 1; }
+            50%  { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        @-webkit-keyframes pulse-fast {
+            0%   { opacity: 1; }
+            50%  { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        .word { 
+            display: inline; 
+            opacity: 0; 
+            transition: opacity 0.25s ease; 
+        }
+        .word.visible { opacity: 1; }
+
+        #bottom-block {
+            max-width: 680px;
+            width: 680px;
+            text-align: center;
+            font-size: clamp(16px, 2.2vh, 22px);
+            font-weight: 400;
+            line-height: 1.3;
+            color: #2a2a2a;
+            letter-spacing: 0.02em;
+            position: absolute;
+            bottom: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            margin: 0 auto;
+            padding: 0 20px;
+            box-sizing: border-box;
+        }
+
+        #bottom-block.visible { opacity: 1; }
+        #bottom-block a { 
+            color: #2a2a2a; 
+            text-decoration: underline; 
+            text-underline-offset: 2px;
+            text-decoration-thickness: 1px;
+            -webkit-text-decoration-thickness: 1px;
+        }
+        #bottom-block strong { 
+            font-weight: 400; 
+            text-decoration: underline; 
+            text-underline-offset: 2px;
+            text-decoration-thickness: 1px;
+            -webkit-text-decoration-thickness: 1px;
+        }
+
+        .projects-link {
+            cursor: pointer;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+            text-decoration-thickness: 1px;
+            -webkit-text-decoration-thickness: 1px;
+            color: #2a2a2a;
+            display: inline-block;
+        }
+
+        .projects-link:hover {
+            animation: pulse 2s ease-in-out;
+            -webkit-animation: pulse 2s ease-in-out;
+            text-decoration: none;
+        }
+
+        #bottom-block strong:hover,
+        #bottom-block a:hover {
+            animation: pulse 2s ease-in-out;
+            -webkit-animation: pulse 2s ease-in-out;
+            text-decoration: none;
+        }
+
+        /* PROJECTS BACK */
+        #back-projects {
+            transform: rotateY(180deg);
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            overflow-y: auto;
+            background: #ffffff;
+        }
+
+        #projects-gradient {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(120deg, #f0ecff, #fff, #e8f6ff, #fff5ee);
+            background-size: 400% 400%;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            pointer-events: none;
+        }
+
+        #card.flipped-projects #projects-gradient {
+            opacity: 1;
+            animation: shimmer-in 0.85s ease forwards, shimmer 8s ease 0.85s infinite;
+        }
+
+        @keyframes shimmer {
+            0%   { background-position: 0% 50%; }
+            50%  { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes shimmer-in {
+            0%   { opacity: 1; background-position: 0% 50%; }
+            100% { opacity: 0; background-position: 60% 50%; }
+        }
+
+        #projects-content {
+            position: relative;
+            z-index: 1;
+            max-width: 680px;
+            width: 100%;
+            padding: 48px 24px;
+            column-count: 1;
+            column-gap: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .ref-section {
+            break-inside: avoid;
+            margin-bottom: 28px;
+            text-align: center;
+            width: 100%;
+        }
+
+        .ref-category {
+            font-family: Helvetica, Arial, sans-serif;
+            font-size: 12px;
+            font-weight: 400;
+            letter-spacing: 0.03em;
+            color: #1a1a1a;
+            margin-bottom: 5px;
+        }
+
+        .ref-item {
+            display: block;
+            font-family: Helvetica, Arial, sans-serif;
+            font-size: 20px;
+            font-weight: 400;
+            line-height: 1.4;
+            color: #1a1a1a;
+            letter-spacing: 0.02em;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            text-decoration-thickness: 1px;
+            -webkit-text-decoration-thickness: 1px;
+            margin-bottom: 2px;
+            cursor: pointer;
+        }
+
+        .ref-item:hover {
+            animation: pulse-fast 1s ease-in-out;
+            -webkit-animation: pulse-fast 1s ease-in-out;
+            text-decoration: none;
+        }
+
+        .ref-category {
+            font-family: Helvetica, Arial, sans-serif;
+            font-size: clamp(10px, 1.2vh, 14px);
+            font-weight: 400;
+            letter-spacing: 0.03em;
+            color: #1a1a1a;
+            margin-bottom: 0.5vh;
+        }
+
+        .ref-item {
+            display: block;
             font-family: Helvetica, Arial, sans-serif;
             font-size: clamp(16px, 2.2vh, 24px);
             font-weight: 400;
